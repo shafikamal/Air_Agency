@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('airlines_name');
             $table->string('route');
-            $table->date('flight_date');
-            $table->double('gross_fare');
+            $table->dateTime('flight_date');
+            $table->float('gross_fare');
             $table->string('net_fare')->nullable();
             $table->enum('status',['pending','check_out'])->default('pending');
             $table->timestamps();

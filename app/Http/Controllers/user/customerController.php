@@ -14,7 +14,7 @@ class customerController extends Controller
     public function customer(){
         $this->validate(\request(),[
             'name'=>'required',
-            'number' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'number' => 'required',
             'office'=>'required',
             'address'=>'required'
         ]);

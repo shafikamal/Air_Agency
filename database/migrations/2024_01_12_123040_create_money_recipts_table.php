@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('money_recipts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->string('purpose');
             $table->string('amount_in_word');
             $table->double('amount');
             $table->string('pay_by');

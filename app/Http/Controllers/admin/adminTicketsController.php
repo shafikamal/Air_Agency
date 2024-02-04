@@ -21,7 +21,6 @@ class adminTicketsController extends Controller
             'net_fare'=>request('net_fare'),
             'status'=>'check_out'
         ]);
-        return 'ok';
 
     }
 }
