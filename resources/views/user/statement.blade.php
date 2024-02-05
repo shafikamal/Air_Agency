@@ -25,7 +25,6 @@
                             <th>Office</th>
                             <th>Balance</th>
                             <th>Details</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         @foreach($customers as $customer)
@@ -37,14 +36,10 @@
                             <td class="table-success">{{$customer['office']}}</td>
                             <td class="table-info">{{$customer['balance']}}</td>
                             <td class="table-bordered">
-                                <a class="btn-icon-split" href="{{url('ledger'.'/'.$customer['id'].'/'.$customer['name'])}}">View Ledger</a>
-                            </td>
-                            <td class="table-primary">
-                            <a class="btn-icon-split btn-success" href="{{url('create/ticket').'/'.$customer['id']}}">Add Ticket</a>||
+                                <a class="btn-icon-split" href="{{url('ledger'.'/'.$customer['id'].'/'.$customer['name'])}}">View Ledger</a>||
 
-                            <a class="btn-danger" href="{{url('editCustomer'.'/'.$customer['id'])}}">Edit</a>
-                             </td>
-                        </tr>
+                                <a class="btn-danger" href="{{url('editCustomer'.'/'.$customer['id'])}}">Edit</a>
+                            </td>
                         </tbody>
                         @endforeach
                     </table>

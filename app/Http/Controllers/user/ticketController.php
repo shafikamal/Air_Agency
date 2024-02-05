@@ -8,13 +8,15 @@ use App\Models\NewTicket;
 
 class ticketController extends Controller
 {
-    public function showTicket($id){;
-        return view('user.createTicket',compact('id'));
+    public function showTicket(){
+        $customers=Customer::all();
+        return view('user.createTicket',compact(['customers']));
     }
 
-    public function ticket($id){
+    public function ticket(){
+        $customer=Customer::where('name',request('customer_name'))->first();
         $ticket=NewTicket::create([
-            'customer_id'=>request('customer_id'),
+            'customer_id'=>$customer->id,
             'name'=>\request('name'),
             'airlines_name'=>\request('airlines_name'),
             'route'=>\request('route'),
@@ -23,7 +25,6 @@ class ticketController extends Controller
 
         ]);
 
-        $customer=Customer::find($id);
         $balance=$customer->balance;
         $customer->update([
             'balance'=>$balance + request('gross_fare')

@@ -20,7 +20,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                          aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="">New ticket</a>
+                        <a class="dropdown-item" href="{{route('ticketShow')}}">New ticket</a>
                         <a class="dropdown-item" href="">Money Receipt </a>
                     </div>
                 </li>
@@ -34,7 +34,7 @@
                     <a class="nav-link" href="contact.html">transaction</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark"  href="{{url('logout')}}">({{ \Illuminate\Support\Facades\Auth::user()->username }}) Logout</a>
+                    <a class="nav-link text-dark"  href="{{url('logout')}}">({{ Auth::user()->username }}) Logout</a>
                 </li>
 
                 @else

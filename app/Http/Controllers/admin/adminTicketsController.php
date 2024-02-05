@@ -8,9 +8,8 @@ use App\Models\NewTicket;
 class adminTicketsController extends Controller
 {
     public function showTickets(){
-        $tickets= NewTicket::all();;
+        $tickets= NewTicket::paginate(3);;
             return view('admin.pendingTickets', compact('tickets'));
-
 
     }
 

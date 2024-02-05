@@ -26,7 +26,17 @@
                                     {{csrf_field()}}
                                     @include('error.error')
                                     <div class="form-group">
-                                        <input value="{{$id}}"  name="customer_id"  hidden>
+                                        <input   name="customer_id"  hidden>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <select class="form-control" name="customer_name">
+                                                <option selected disabled>-----Select Customer Name-----</option>
+                                                @foreach($customers as $customer)
+                                                    <option value="{{$customer['name']}}">{{$customer['name']}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user"

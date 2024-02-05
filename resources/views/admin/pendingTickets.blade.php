@@ -56,5 +56,8 @@
 
     </div>
     <!-- /.container-fluid -->
+    <div>
+        {{$tickets->links()}}
+    </div>
 @endsection
 

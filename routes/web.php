@@ -33,8 +33,8 @@ Route::middleware(['userAuth'])->group(function (){
 
     Route::get('statement',[statementController::class,'showStatement'])->name('statementShow');
 
-    Route::get('create/ticket/{id}',[ticketController::class,'showTicket'])->name('ticketShow');
-    Route::post('create/ticket/{id}',[ticketController::class,'ticket'])->name('ticket');
+    Route::get('create/ticket',[ticketController::class,'showTicket'])->name('ticketShow');
+    Route::post('create/ticket',[ticketController::class,'ticket'])->name('ticket');
 
     Route::get('ledger/{id}/{name}',[\App\Http\Controllers\user\ledgerController::class,'showLedger'])->name('ledgerShow');
 

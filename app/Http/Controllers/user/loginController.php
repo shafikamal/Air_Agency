@@ -16,7 +16,6 @@ class loginController extends Controller
     }
     public function register(){
         $this->validate(\request(),[
-            //'username'=>'required|min:4|unique:users',
             'email'=>'required|unique:users',
             'password'=>'confirmed|required',
         ]);
