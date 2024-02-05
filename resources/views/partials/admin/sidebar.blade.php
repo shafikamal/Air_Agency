@@ -18,6 +18,13 @@
             <span>Tickets</span></a>
     </li>
 
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('staffShow')}}">
+            <span>Staff</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
