@@ -26,7 +26,7 @@
                                     {{csrf_field()}}
                                     @include('error.error')
                                     <div class="form-group">
-                                        <input   name="customer_id"  hidden>
+                                        <input   name="customer_id"  type="hidden" >
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">

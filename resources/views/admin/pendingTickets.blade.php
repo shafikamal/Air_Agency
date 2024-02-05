@@ -24,11 +24,12 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        @foreach($tickets as $key=> $ticket)
-                            @if($ticket['status'] == 'pending')
-                            <tbody>
-                            <tr>
-                                <form action="{{route('ticketsShow')}}" method="post">
+                        @include('error.error')
+                       @foreach($tickets as $key=> $ticket)
+                           <tbody>
+                           <tr>
+                               <form action="{{url('admin/approve')}}" method="post">
+                                   @csrf
                                 <td class="table-dark">{{$key+1}}</td>
                                 <td class="table-info">{{$ticket['name']}}</td>
                                 <td class="table-warning">{{$ticket['airlines_name']}}</td>
@@ -36,18 +37,18 @@
                                 <td class="table-active">{{$ticket['flight_date']}}</td>
                                 <td class="table-primary">{{$ticket['gross_fare']}}</td>
                                 <td class="table-light">
+                                    <input type="hidden" name="ticket_id" value="{{$ticket['id']}}">
                                     <input type="number" name="net_fare" placeholder="Net Fare">
                                 </td>
                                 <td class="table-warning">{{$ticket['status']}}</td>
                                 <td class="table-danger">
-                                    <a class="btn-icon-split" href="{{url('admin/approve').'/'.$ticket['id']}}">Approve</a>
+                                    <input type="submit" value="Approve" name="submit">
                                 </td>
 
                                 </form>
 
                             </tr>
                             </tbody>
-                            @endif
                         @endforeach
                     </table>
                 </div>

@@ -61,6 +61,6 @@ Route::post('admin/login',[\App\Http\Controllers\admin\adminLoginController::cla
 Route::get('admin/logout',[\App\Http\Controllers\admin\adminLoginController::class,'logout'])->name('adminLogout');
 
 Route::get('admin/ticket',[\App\Http\Controllers\admin\adminTicketsController::class,'showTickets'])->name('ticketsShow');
-Route::get('admin/approve/{id}',[\App\Http\Controllers\admin\adminTicketsController::class,'approveTickets']);
+Route::post('admin/approve',[\App\Http\Controllers\admin\adminTicketsController::class,'approveTickets']);
 
 
