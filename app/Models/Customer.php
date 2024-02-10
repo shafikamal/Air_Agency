@@ -10,4 +10,12 @@ class Customer extends Model
     use HasFactory;
 
     protected $guarded=[];
+
+    public function new_ticket(){
+        return $this->hasMany(NewTicket::class);
+    }
+
+    public function money_receipt(){
+        return $this->hasMany(MoneyRecipt::class);
+    }
 }

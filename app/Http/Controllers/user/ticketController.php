@@ -14,6 +14,15 @@ class ticketController extends Controller
     }
 
     public function ticket(){
+        $this->validate(request(),[
+            'customer_id'=>'required',
+            'name'=>'required',
+            'airlines_name'=>'required',
+            'route'=>'required',
+            'flight_date'=>'required',
+            'gross_fare'=>'required'
+        ]);
+
         $customer=Customer::where('name',request('customer_name'))->first();
         $ticket=NewTicket::create([
             'customer_id'=>$customer->id,

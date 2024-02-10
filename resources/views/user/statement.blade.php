@@ -31,13 +31,13 @@
                         <tbody>
                         <tr>
                             <td class="table-dark">{{$customer['id']}}</td>
-                            <td class="table-secondary">{{$customer['name']}}</td>
+                            <td class="table-secondary">
+                                <a class="btn-icon-split" href="{{url('ledger'.'/'.$customer['id'].'/'.$customer['name'])}}">{{$customer['name']}}</a>
+                            </td>
                             <td class="table-warning">{{$customer['number']}}</td>
                             <td class="table-success">{{$customer['office']}}</td>
                             <td class="table-info">{{$customer['balance']}}</td>
                             <td class="table-bordered">
-                                <a class="btn-icon-split" href="{{url('ledger'.'/'.$customer['id'].'/'.$customer['name'])}}">View Ledger</a>||
-
                                 <a class="btn-danger" href="{{url('editCustomer'.'/'.$customer['id'])}}">Edit</a>
                             </td>
                         </tbody>

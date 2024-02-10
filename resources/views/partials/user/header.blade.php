@@ -21,7 +21,7 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                          aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="{{route('ticketShow')}}">New ticket</a>
-                        <a class="dropdown-item" href="">Money Receipt </a>
+                        <a class="dropdown-item" href="{{route('receiptShow')}}">Money Receipt </a>
                     </div>
                 </li>
                 <li class="nav-item">

@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\adminController;
+use App\Http\Controllers\admin\adminLoginController;
+use App\Http\Controllers\admin\adminTicketsController;
+use App\Http\Controllers\admin\staffController;
 use App\Http\Controllers\user\customerController;
+use App\Http\Controllers\user\ledgerController;
 use App\Http\Controllers\user\loginController;
 use App\Http\Controllers\user\statementController;
 use App\Http\Controllers\user\ticketController;
@@ -36,7 +41,10 @@ Route::middleware(['userAuth'])->group(function (){
     Route::get('create/ticket',[ticketController::class,'showTicket'])->name('ticketShow');
     Route::post('create/ticket',[ticketController::class,'ticket'])->name('ticket');
 
-    Route::get('ledger/{id}/{name}',[\App\Http\Controllers\user\ledgerController::class,'showLedger'])->name('ledgerShow');
+    Route::get('ledger/{id}/{name}',[ledgerController::class,'showLedger'])->name('ledgerShow');
+
+    Route::get('receipt',[\App\Http\Controllers\user\receiptController::class,'showReceipt'])->name('receiptShow');
+    Route::post('receipt',[\App\Http\Controllers\user\receiptController::class,'receipt'])->name('receiptShow');
 
 
 
@@ -53,17 +61,23 @@ Route::post('login',[loginController::class,'login'])->name('login');
 
 
 //ADMIN
-Route::get('admin/index',[\App\Http\Controllers\admin\adminController::class,'showHome'])->name('adminShow')->middleware('adminAuth');
 
-Route::get('admin/login',[\App\Http\Controllers\admin\adminLoginController::class,'showAdminLogin'])->name('adminLoginShow');
-Route::post('admin/login',[\App\Http\Controllers\admin\adminLoginController::class,'adminLogin'])->name('adminLogin');
 
-Route::get('admin/logout',[\App\Http\Controllers\admin\adminLoginController::class,'logout'])->name('adminLogout');
+Route::get('admin/login',[adminLoginController::class,'showAdminLogin'])->name('adminLoginShow');
+Route::post('admin/login',[adminLoginController::class,'adminLogin'])->name('adminLogin');
 
-Route::get('admin/ticket',[\App\Http\Controllers\admin\adminTicketsController::class,'showTickets'])->name('ticketsShow');
-Route::post('admin/approve',[\App\Http\Controllers\admin\adminTicketsController::class,'approveTickets']);
+Route::middleware('adminAuth')->group(function (){
+    Route::get('admin/index',[adminController::class,'showHome'])->name('adminShow');
+    Route::get('admin/logout',[adminLoginController::class,'logout'])->name('adminLogout');
 
-Route::get('admin/staff',[\App\Http\Controllers\admin\staffController::class,'showStaff'])->name('staffShow');
-Route::post('admin/staff/{id}',[\App\Http\Controllers\admin\staffController::class,'updateStaff']);
+    Route::get('admin/ticket',[adminTicketsController::class,'showTickets'])->name('ticketsShow');
+    Route::post('admin/approve',[adminTicketsController::class,'approveTickets']);
+
+    Route::get('admin/staff',[staffController::class,'showStaff'])->name('staffShow');
+    Route::post('admin/staff/{id}',[staffController::class,'updateStaff']);
+
+});
+
+
 
 
