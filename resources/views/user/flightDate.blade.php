@@ -7,8 +7,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h1 class="m-0 font-weight-bolder text-center text-primary">{{$name}}</h1>
-                <h4 class="m-0 font-weight-bolder text-center ">General Ledger</h4>
+                <h4 class="m-0 font-weight-bolder text-center ">Upcoming Flight date</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,38 +15,31 @@
 
                         <thead>
                         <tr>
-                            <th>Sl No.</th>
-                            <th>Issue Date</th>
+
                             <th>Pax Name</th>
-                            <th>Airlines Name</th>
                             <th>Route</th>
+                            <th>Customer Name</th>
                             <th>Flight Date</th>
-                            <th>Fare</th>
-                            <th>Deposit</th>
+
                         </tr>
                         </thead>
                         @foreach($tickets as $key=> $ticket)
-                                <tbody>
-                                <tr>
-                                    <form action="{{route('ticketsShow')}}" method="post">
-                                        <td class="table-dark">{{$key+1}}</td>
-                                        <td class="table-warning">{{\Carbon\Carbon::parse($ticket['created_at'])->format('d-m-y')}}</td>
-                                        <td class="table-info">{{$ticket['name']}}</td>
-                                        <td class="table-warning">{{$ticket['airlines_name']}}</td>
-                                        <td class="table-success">{{$ticket['route']}}</td>
-                                        <td class="table-active">{{\Carbon\Carbon::parse($ticket['flight_date'])->format('d-m-y')}}</td>
-                                        <td class="table-primary">{{$ticket['gross_fare']}}</td>
-                                        <td class="table-primary">1000</td>
+                            @if($ticket['flight_date'] >= date('Y-m-d') )
+                            <tbody>
+                            <tr>
 
-                                    </form>
+                                    <td class="table-primary">{{$ticket['name']}}</td>
+                                    <td class="table-light">{{$ticket['route']}}</td>
+                                    <td class="table-warning">{{$ticket->customer->name}}</td>
+                                    <td class="table-info">{{\Carbon\Carbon::parse($ticket['flight_date'])->format('d-m-y')}}</td>
 
-                                </tr>
-                                </tbody>
+                            </tr>
+                            </tbody>
+                            @endif
                         @endforeach
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
 @endsection

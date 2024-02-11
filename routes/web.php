@@ -5,8 +5,10 @@ use App\Http\Controllers\admin\adminLoginController;
 use App\Http\Controllers\admin\adminTicketsController;
 use App\Http\Controllers\admin\staffController;
 use App\Http\Controllers\user\customerController;
+use App\Http\Controllers\user\flightDateController;
 use App\Http\Controllers\user\ledgerController;
 use App\Http\Controllers\user\loginController;
+use App\Http\Controllers\user\receiptController;
 use App\Http\Controllers\user\statementController;
 use App\Http\Controllers\user\ticketController;
 use App\Http\Controllers\user\userController;
@@ -43,8 +45,10 @@ Route::middleware(['userAuth'])->group(function (){
 
     Route::get('ledger/{id}/{name}',[ledgerController::class,'showLedger'])->name('ledgerShow');
 
-    Route::get('receipt',[\App\Http\Controllers\user\receiptController::class,'showReceipt'])->name('receiptShow');
-    Route::post('receipt',[\App\Http\Controllers\user\receiptController::class,'receipt'])->name('receiptShow');
+    Route::get('receipt',[receiptController::class,'showReceipt'])->name('receiptShow');
+    Route::post('receipt',[receiptController::class,'receipt'])->name('receiptShow');
+
+    Route::get('flight/date',[flightDateController::class,'showFlightDate'])->name('flightDateShow');
 
 
 

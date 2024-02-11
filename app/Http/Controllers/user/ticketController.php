@@ -15,7 +15,7 @@ class ticketController extends Controller
 
     public function ticket(){
         $this->validate(request(),[
-            'customer_id'=>'required',
+//            'customer_id'=>'required',
             'name'=>'required',
             'airlines_name'=>'required',
             'route'=>'required',

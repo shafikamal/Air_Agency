@@ -28,7 +28,7 @@
                     <a class="nav-link" href="{{route('statementShow')}}">Statement</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">flight date</a>
+                    <a class="nav-link" href="{{route('flightDateShow')}}">flight date</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">transaction</a>
