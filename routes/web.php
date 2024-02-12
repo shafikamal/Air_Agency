@@ -64,7 +64,7 @@ Route::get('login',[loginController::class,'showLogin'])->name('loginShow');
 Route::post('login',[loginController::class,'login'])->name('login');
 
 
-//ADMIN
+//ADMIN SECTION
 
 
 Route::get('admin/login',[adminLoginController::class,'showAdminLogin'])->name('adminLoginShow');
