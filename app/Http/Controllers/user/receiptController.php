@@ -37,7 +37,8 @@ class receiptController extends Controller
         $ticket->ticket()->create([
             'customer_id'=>$customer->id,
             'pay_by'=>\request('pay_by'),
-            'deposit'=>\request('amount')
+            'deposit'=>\request('amount'),
+            'status'=>'check_out'
         ]);
 
         $balance=$customer->balance;

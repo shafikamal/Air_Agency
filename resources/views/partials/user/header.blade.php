@@ -31,9 +31,6 @@
                     <a class="nav-link" href="{{route('flightDateShow')}}">flight date</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">transaction</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-dark"  href="{{url('logout')}}">({{ Auth::user()->username }}) Logout</a>
                 </li>
 
