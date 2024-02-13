@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\MoneyRecipt;
+use App\Models\Receipt;
 use Illuminate\Http\Request;
 
 class receiptController extends Controller
@@ -25,7 +26,7 @@ class receiptController extends Controller
 
         $customer=Customer::where('name',\request('customer_name'))->first();
 
-        MoneyRecipt::create([
+        $ticket=Receipt::create([
             'customer_id'=>$customer->id,
             'purpose'=>\request('purpose'),
             'amount_in_word'=>\request('in_word'),
@@ -33,11 +34,17 @@ class receiptController extends Controller
             'pay_by'=>\request('pay_by')
         ]);
 
+        $ticket->ticket()->create([
+            'customer_id'=>$customer->id,
+            'pay_by'=>\request('pay_by'),
+            'deposit'=>\request('amount')
+        ]);
+
         $balance=$customer->balance;
         $customer->update([
             'balance'=>$balance-\request('amount')
         ]);
 
-        return 'ok';
+        return redirect()->route('statementShow');
     }
 }

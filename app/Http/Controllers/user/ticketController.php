@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\NewTicket;
+use App\Models\Ticket;
 
 class ticketController extends Controller
 {
@@ -24,7 +25,7 @@ class ticketController extends Controller
         ]);
 
         $customer=Customer::where('name',request('customer_name'))->first();
-        $ticket=NewTicket::create([
+        $ticket=Ticket::create([
             'customer_id'=>$customer->id,
             'name'=>\request('name'),
             'airlines_name'=>\request('airlines_name'),

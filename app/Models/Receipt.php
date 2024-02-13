@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NewTicket extends Model
+class Receipt extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,8 @@ class NewTicket extends Model
     public function customer(){
         return $this->belongsTo(Customer::class);
     }
+
+    public function ticket(){
+        return $this->hasOne(Ticket::class);
+    }
 }
-
-

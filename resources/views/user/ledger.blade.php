@@ -18,32 +18,43 @@
                         <tr>
                             <th>Sl No.</th>
                             <th>Issue Date</th>
-                            <th>Pax Name</th>
-                            <th>Airlines Name</th>
-                            <th>Route</th>
-                            <th>Flight Date</th>
-                            <th>Fare</th>
-                            <th>Deposit</th>
+                            <th>Details</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
                         </tr>
                         </thead>
                         @foreach($tickets as $key=> $ticket)
-                                <tbody>
+
+                            <tbody>
+                            @if($ticket['gross_fare'] != null)
                                 <tr>
-                                    <form action="{{route('ticketsShow')}}" method="post">
-                                        <td class="table-dark">{{$key+1}}</td>
-                                        <td class="table-warning">{{\Carbon\Carbon::parse($ticket['created_at'])->format('d-m-y')}}</td>
-                                        <td class="table-info">{{$ticket['name']}}</td>
-                                        <td class="table-warning">{{$ticket['airlines_name']}}</td>
-                                        <td class="table-success">{{$ticket['route']}}</td>
-                                        <td class="table-active">{{\Carbon\Carbon::parse($ticket['flight_date'])->format('d-m-y')}}</td>
-                                        <td class="table-primary">{{$ticket['gross_fare']}}</td>
-                                        <td class="table-primary">1000</td>
-
-                                    </form>
-
+                                    <td class="table-dark">{{$key+1}}</td>
+                                    <td class="table-primary">{{\Carbon\Carbon::parse($ticket['created_at'])->format('d-m-y')}}</td>
+                                    <td class="table-info">{{$ticket['name'].'->'.$ticket['route'].'->'.\Carbon\Carbon::parse($ticket['flight_date'])->format('d-m-y')}}</td>
+                                    <td class="table-warning">{{$ticket['gross_fare']}}</td>
+                                    <td class="table-success"></td>
                                 </tr>
+                            @endif
+
+                            @if($ticket['deposit'] != null)
+                                <tr>
+                                    <td class="table-dark">{{$key+1}}</td>
+                                    <td class="table-primary">{{\Carbon\Carbon::parse($ticket['created_at'])->format('d-m-y')}}</td>
+                                    <td class="table-info">{{$ticket['pay_by']}}</td>
+                                    <td class="table-warning"></td>
+                                    <td  class="table-success"> {{$ticket['deposit']}}</td>
+                                </tr>
+                            @endif
                                 </tbody>
                         @endforeach
+
+                        <tfoot>
+                        <tr>
+                            <th class="text-xl-center" colspan="3">Total Due- {{$totalDue}}</th>
+                            <th>{{$totalDebit}}</th>
+                            <th>{{$totalCredit}}</th>
+                        </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
