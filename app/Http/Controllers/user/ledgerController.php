@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ledgerController extends Controller
 {
     public function showLedger($id,$name){
-        $tickets=Ticket::where('customer_id',$id)->orderBy('created_at', 'desc')->get();
+        $tickets=Ticket::where('customer_id',$id)->whereBetween('created_at', [now()->subMonth(), now()])->get();
 
         $totalDebit=$tickets->sum('gross_fare');
         $totalCredit=$tickets->sum('deposit');
