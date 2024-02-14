@@ -33,11 +33,16 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark"  href="{{url('logout')}}">({{ Auth::user()->username }}) Logout</a>
                 </li>
-
                 @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('loginShow')}}">login</a>
-                    </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('loginShow')}}">User</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('adminLoginShow')}}">Admin</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('registerShow')}}">register</a>
                 </li>
